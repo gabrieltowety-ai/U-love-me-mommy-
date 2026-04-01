@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Love Me?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #ffe6e6;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #yesBtn {
+      background-color: #ff6666;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+    #noBtn {
+      background-color: #ccc;
+      color: black;
+      border: none;
+      border-radius: 8px;
+    }
+    #resultImg {
+      margin-top: 30px;
+      display: none;
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Do you love me?</h1>
+  <div>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+  <img id="resultImg" src="https://i.imgur.com/yourImage.jpg" alt="Love Image">
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const resultImg = document.getElementById('resultImg');
+
+    let clickCount = 0;
+
+    noBtn.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount < 5) {
+        // shrink the No button
+        noBtn.style.transform = `scale(${1 - clickCount * 0.15})`;
+      } else {
+        // replace No button with "Shut up and say Yes"
+        noBtn.textContent = "Shut up and say Yes";
+        noBtn.style.transform = "scale(1)";
+      }
+    });
+
+    yesBtn.addEventListener('click', () => {
+      resultImg.style.display = 'block'; // show your image
+      alert("I knew you were obsessed with me 😎");
+    });
+  </script>
+
+</body>
+</html>
